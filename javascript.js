@@ -50,43 +50,43 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 let round = 0;
-//...do I need to initialize these in some way? nope! Simply typing them in defines them.
-
 
 //step 5: write logic to play a single round
-
-// const humanSelection = getHumanChoice();
-// const computerSelection = getComputerChoice(); these are what input later
 
 function playRound(humanChoice, computerChoice){
     
     if (humanChoice !== undefined){
         if (humanChoice === computerChoice)
             {
-                console.log("It's a draw! Do-over!");
                 round++;
+                console.log("Round " + round);
+                console.log("It's a draw! No points for you!");
             } else if(humanChoice !== computerChoice) 
                 {
                     if (humanChoice == "rock" && computerChoice == "paper") 
                         {
+                            round++;
+                            console.log("Round " + round);
                             console.log("You lose! Paper beats rock.");
                             computerScore++;
-                            round++;
                         } else if (humanChoice == "rock" && computerChoice == "scissors")
                             {
+                                round++;
+                                console.log("Round " + round);
                                 console.log("You win! Rock beats scissors.");
                                 humanScore++;
-                                round++
                             } else if (humanChoice == "paper" && computerChoice == "rock")
                                 {
+                                    round++;
+                                    console.log("Round " + round);
                                     console.log("You win! Paper beats rock.");
                                     humanScore++;
-                                    round++;
                                 } else if (humanChoice == "paper" && computerChoice == "scissors")
                                     {
+                                        round++;
+                                        console.log("Round " + round);
                                         console.log("You lose! Scissors beats paper.");
                                         computerScore++;
-                                        round++;
                                     } else if (humanChoice == "scissors" && computerChoice == "rock")
                                         {
                                             console.log("You lose! Rock beats scissors.");
@@ -94,28 +94,31 @@ function playRound(humanChoice, computerChoice){
                                             round++;
                                         } else if (humanChoice == "scissors" && computerChoice == "paper")
                                             {
+                                                round++;
+                                                console.log("Round " + round);
                                                 console.log("You win! Scissors beats paper.")
                                                 humanScore++;
-                                                round++;
                                             }
                 }
             }
     console.log("Your score = " + humanScore);
     console.log("The computer's score = " + computerScore);
-    console.log("Round " + round);
 
             //add ability to post score. 
             //Each time a round happens, post scores:
     
             //declare the winner after the last round.
             //end game
-    if (round == 4) {
+    if (round == 5) {
             if (humanScore == computerScore){
-                return console.log("The game is a draw!");
+                console.log("The game is a draw!");
+                round = 0;
             } else if (humanScore > computerScore){
-                return console.log("You win the game!");
+                console.log("You win the game!");
+                round = 0;
             } else if (humanScore < computerScore) {
-                return console.log("The computer wins the game...");
+                console.log("The computer wins the game...");
+                round = 0;
             }
         }
     }
