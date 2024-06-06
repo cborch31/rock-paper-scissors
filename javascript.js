@@ -1,4 +1,4 @@
-console.log("hello world");
+console.log("hello world"); //test to make sure script is working with html
 
 //computer chooses random number between 1 and 3
 // 1 is rock
