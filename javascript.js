@@ -35,9 +35,8 @@ function getHumanChoice() {
 
     if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissors") {
         return humanChoice;
-    } else { //if not rock, paper, or scissors, ask again
-            humanChoice = alert("Invalid option. Please choose rock, paper, or scissors.");
-            console.log(getHumanChoice()); //re-run code from the top
+    } else { //if not rock, paper, or scissors, end.
+            console.log("Invalid option. Please choose rock, paper, or scissors.");
         }
 
     return humanChoice; //get (valid) humanChoice
@@ -50,6 +49,7 @@ function getHumanChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 //...do I need to initialize these in some way? nope! Simply typing them in defines them.
 
 
@@ -59,37 +59,65 @@ let computerScore = 0;
 // const computerSelection = getComputerChoice(); these are what input later
 
 function playRound(humanChoice, computerChoice){
-    if (humanChoice === computerChoice)
-        {
-            console.log("It's a draw! Do-over!");
-        } else if(humanChoice !== computerChoice) 
+    
+    if (humanChoice !== undefined){
+        if (humanChoice === computerChoice)
             {
-                if (humanChoice == "rock" && computerChoice == "paper") 
-                    {
-                        console.log("You lose! Paper beats rock.");
-                        computerScore++;
-                    } else if (humanChoice == "rock" && computerChoice == "scissors")
+                console.log("It's a draw! Do-over!");
+                round++;
+            } else if(humanChoice !== computerChoice) 
+                {
+                    if (humanChoice == "rock" && computerChoice == "paper") 
                         {
-                            console.log("You win! Rock beats scissors.");
-                            humanScore++;
-                        } else if (humanChoice == "paper" && computerChoice == "rock")
+                            console.log("You lose! Paper beats rock.");
+                            computerScore++;
+                            round++;
+                        } else if (humanChoice == "rock" && computerChoice == "scissors")
                             {
-                                console.log("You win! Paper beats rock.");
+                                console.log("You win! Rock beats scissors.");
                                 humanScore++;
-                            } else if (humanChoice == "paper" && computerChoice == "scissors")
+                                round++
+                            } else if (humanChoice == "paper" && computerChoice == "rock")
                                 {
-                                    console.log("You lose! Scissors beats paper.");
-                                    computerScore++;
-                                } else if (humanChoice == "scissors" && computerChoice == "rock")
+                                    console.log("You win! Paper beats rock.");
+                                    humanScore++;
+                                    round++;
+                                } else if (humanChoice == "paper" && computerChoice == "scissors")
                                     {
-                                        console.log("You lose! Rock beats scissors.");
+                                        console.log("You lose! Scissors beats paper.");
                                         computerScore++;
-                                    } else if (humanChoice == "scissors" && computerChoice == "paper")
+                                        round++;
+                                    } else if (humanChoice == "scissors" && computerChoice == "rock")
                                         {
-                                            console.log("You win! Scissors beats paper.")
-                                            humanScore++;
-                                        }
+                                            console.log("You lose! Rock beats scissors.");
+                                            computerScore++;
+                                            round++;
+                                        } else if (humanChoice == "scissors" && computerChoice == "paper")
+                                            {
+                                                console.log("You win! Scissors beats paper.")
+                                                humanScore++;
+                                                round++;
+                                            }
+                }
             }
+    console.log("Your score = " + humanScore);
+    console.log("The computer's score = " + computerScore);
+    console.log("Round " + round);
+
+            //add ability to post score. 
+            //Each time a round happens, post scores:
+    
+            //declare the winner after the last round.
+            //end game
+    if (round == 4) {
+            if (humanScore == computerScore){
+                return console.log("The game is a draw!");
+            } else if (humanScore > computerScore){
+                return console.log("You win the game!");
+            } else if (humanScore < computerScore) {
+                return console.log("The computer wins the game...");
+            }
+        }
     }
 
 function playGame() {
